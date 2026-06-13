@@ -1,87 +1,40 @@
-Para criar uma API simples usando **Node.js** com **Express**. A API vai ter alguns endpoints para demonstrar o funcionamento.
+# NodeJS Express Rest
 
-### Passos para criar a API com Node.js e Express:
+![GitHub release](https://img.shields.io/github/v/release/letsdevapps/nodejs-express-rest)
+![GitHub last commit](https://img.shields.io/github/last-commit/letsdevapps/nodejs-express-rest)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/letsdevapps/nodejs-express-rest/build-ci.yml)
 
-#### 1. **Inicialize o projeto:**
+## Criar a API com Node.js e Express:
+
+### 1. **Inicialize o projeto:**
 
 Abra o terminal e crie uma nova pasta para o projeto. Em seguida, inicialize o npm para criar o arquivo `package.json`.
 
-	```bash
-	mkdir meu-api
-	cd meu-api
+	mkdir nodejs-express-rest
+	cd nodejs-express-restv
 	npm init -y
-	```
 
-#### 2. **Instale o Express:**
+### 2. **Instale o Express:**
 
 No mesmo diretório, instale o **Express** como dependência:
 
-	```bash
 	npm install express
-	```
 
-#### 3. **Crie o arquivo do servidor (server.js):**
+### 3. **Criar app **
 
-Crie um arquivo chamado `server.js` na raiz do projeto.
+Criar server.js na raiz do projeto
 
-	```javascript
-	const express = require('express');
-	const app = express();
-	const port = 3000;
+Criar app.js
 
-	// Middleware para lidar com o formato JSON
-	app.use(express.json());
+Criar routes
 
-	// Rota GET simples
-	app.get('/', (req, res) => {
-	  res.send('Olá, mundo!');
-	});
+Criar controllers
 
-	// Rota GET para retornar uma lista de usuários
-	app.get('/usuarios', (req, res) => {
-	  const usuarios = [
-	    { id: 1, nome: 'João' },
-	    { id: 2, nome: 'Maria' },
-	    { id: 3, nome: 'Pedro' }
-	  ];
-	  res.json(usuarios);
-	});
-
-	// Rota POST para criar um novo usuário
-	app.post('/usuarios', (req, res) => {
-	  const novoUsuario = req.body;  // Dados do usuário enviados no corpo da requisição
-	  novoUsuario.id = Math.floor(Math.random() * 1000);  // Gerar um ID aleatório
-	  res.status(201).json(novoUsuario);  // Retornar o novo usuário
-	});
-
-	// Rota PUT para atualizar um usuário existente
-	app.put('/usuarios/:id', (req, res) => {
-	  const id = req.params.id;
-	  const dadosAtualizados = req.body;
-	  // Em um banco de dados real, você faria a atualização aqui
-	  res.json({ id, ...dadosAtualizados });
-	});
-
-	// Rota DELETE para excluir um usuário
-	app.delete('/usuarios/:id', (req, res) => {
-	  const id = req.params.id;
-	  // Em um banco de dados real, você excluiria o usuário aqui
-	  res.json({ mensagem: `Usuário ${id} excluído com sucesso!` });
-	});
-
-	// Inicia o servidor
-	app.listen(port, () => {
-	  console.log(`Servidor rodando na porta ${port}`);
-	});
-	```
-
-#### 4. **Rodando o servidor:**
+### 4. **Rodando o servidor:**
 
 Agora, você pode rodar o servidor com o comando abaixo:
 
-	```bash
-	node server.js
-	```
+	node src/server.js
 
 O servidor estará rodando na porta `3000`. A partir de agora, você pode acessar as rotas da API no seu navegador ou usar uma ferramenta como o **Postman** para testar as requisições.
 
@@ -92,12 +45,6 @@ O servidor estará rodando na porta `3000`. A partir de agora, você pode acessa
 
 	   ```
 	   http://localhost:3000/
-	   ```
-
-   Você deve ver:
-
-	   ```
-	   Olá, mundo!
 	   ```
 
 2. **GET `/usuarios`**:
@@ -168,9 +115,49 @@ O servidor estará rodando na porta `3000`. A partir de agora, você pode acessa
 	   }
 	   ```
 
-### Resumo:
+## Clone Reinstall 
 
-Esse exemplo cria um servidor simples usando **Node.js** e **Express** com as principais operações de uma API RESTful: **GET**, **POST**, **PUT** e **DELETE**. Você pode expandir isso para interagir com um banco de dados (como MongoDB, PostgreSQL, etc.), adicionar autenticação, validações e muito mais.
+Clone o repositorio nodejs-express-rest e inicialize as dependencias
 
-Se você quiser adicionar um banco de dados ou precisar de mais detalhes sobre algum ponto, só avisar!
+	npm install
+	
+	npm audit fix
 
+## Start
+
+Vamos adicionar comandos rapidos de inicialização
+
+	"scripts": {
+	  "start": "node src/server.js",
+	  "dev": "nodemon src/server.js"
+	}
+	
+(Opcional) modo dev automático. Pra não precisar reiniciar toda hora:
+
+	npm install --save-dev nodemon
+
+## Variaveis de ambiente
+
+	npm install dotenv
+
+Criar arquivo .env (este não irá para git remote por conter infos sensiveis)
+
+	touch .env
+
+Incluir 
+
+	PORT=3000
+
+Criar tambem arquivo .env.example (esta até pode ir para git remote sem preenchimento das infos sensiveis para referencia do time)
+
+**Infos vazias**
+
+	PORT=
+	DB_PASSWORD=
+	
+**Evite Infos importates**
+
+	PORT=3000
+	DB_PASSWORD=123456
+	JWT_SECRET=segredo_super_importante
+	API_KEY=abc123
