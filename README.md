@@ -131,6 +131,14 @@ Vamos adicionar comandos rapidos de inicialização
 	  "start": "node src/server.js",
 	  "dev": "nodemon src/server.js"
 	}
+
+Rode com
+
+	npm run start
+	
+ou
+
+	npm run dev
 	
 (Opcional) modo dev automático. Pra não precisar reiniciar toda hora:
 
@@ -161,3 +169,9 @@ Criar tambem arquivo .env.example (esta até pode ir para git remote sem preench
 	DB_PASSWORD=123456
 	JWT_SECRET=segredo_super_importante
 	API_KEY=abc123
+
+## Docker
+
+    docker build -t nodejs-express-rest .
+    
+    docker run --rm -it -p 3000:3000 nodejs-express-rest
