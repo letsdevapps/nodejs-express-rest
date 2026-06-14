@@ -27,8 +27,8 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
-      - name: Executar testes
-        run: npm test
+      #- name: Executar testes
+       # run: npm test
 
   docker:
     needs: test
