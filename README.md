@@ -175,3 +175,40 @@ Criar tambem arquivo .env.example (esta até pode ir para git remote sem preench
     docker build -t nodejs-express-rest .
     
     docker run --rm -it -p 3000:3000 nodejs-express-rest
+
+## Kubernetes (Minikube)
+
+## Como rodar
+
+### 1. Subir o cluster
+    
+    minikube start
+
+### 2. Habilitar Ingress
+
+    minikube addons enable ingress
+
+### 3. Build da imagem
+
+    docker build -t nodejs-express-rest:latest .
+
+### 4. (ou) carregar no minikube
+
+    minikube image load nodejs-express-rest:latest
+
+### 5. Aplicar manifests
+
+    kubectl apply -f k8s/
+
+### 6. Acessar
+
+    minikube ip
+
+    http://<minikube-ip>/nodejs
+
+## Debug
+
+    kubectl get pods
+    kubectl get svc
+    kubectl get ingress
+    kubectl get endpoints
