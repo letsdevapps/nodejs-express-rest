@@ -14,7 +14,9 @@ spec:
     spec:
       containers:
         - name: nodejs-container
-          image: nodejs-express-rest:latest
-          imagePullPolicy: Never
+          #image: nodejs-express-rest:latest
+          #imagePullPolicy: Never
+          image: ghcr.io/letsdevapps/nodejs-express-rest:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
