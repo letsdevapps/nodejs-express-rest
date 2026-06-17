@@ -29,9 +29,9 @@ resource "kubernetes_deployment" "nodejs_app" {
       spec {
         container {
           name  = "nodejs-container"
-          image = "nodejs-express-rest:latest"
+          image = "ghcr.io/letsdevapps/nodejs-express-rest:latest"
 
-          image_pull_policy = "Never"
+          image_pull_policy = "Always"
 
           port {
             container_port = 3000
@@ -92,4 +92,3 @@ resource "kubernetes_ingress_v1" "app_ingress" {
     }
   }
 }
-

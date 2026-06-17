@@ -31,6 +31,7 @@ build/
 
 # Terraform state
 terraform.tfstate
+*.tfstate.*
 terraform.tfstate.backup
 
 # Terraform directory
