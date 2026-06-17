@@ -78,13 +78,13 @@ Com Kubernetes, aplicar os Manifests
 
 	kubectl apply -f k8s/
 
-- Em ambiente local (Minikube): minikube service <service-name>
+Em ambiente local (Minikube): minikube service <service-name>
 
 	minikube service nodejs-service
 	
 	minikube service nodejs-service --url
 
-- Em ambiente Kubernetes externo, O acesso depende da configuração do cluster:
+Em ambiente Kubernetes externo, O acesso depende da configuração do cluster:
 
 via LoadBalancer
 
